@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugged')
-    Plug 'SirVer/ultisnips'
     Plug 'lervag/vimtex'
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -8,14 +7,14 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-surround'
         let g:tex_flavor = 'latex'
     Plug 'rrethy/vim-illuminate'
-        let g:Illuminate_delay = 100
-        let g:Illuminate_highlightUnderCursor = 1
+        let g:Illuminate_delay = 0
+        let g:Illuminate_highlightUnderCursor = 0
     Plug 'airblade/vim-gitgutter'
         let g:gitgutter_sign_removed = '-'
     "syntax
     Plug 'tpope/vim-markdown'
-    Plug 'neovimhaskell/haskell-vim'
     Plug 'morhetz/gruvbox'
+    Plug 'neovimhaskell/haskell-vim'
     Plug 'vim-syntastic/syntastic'
 call plug#end()
 
@@ -101,7 +100,7 @@ function Highlights()
     "green
     hi User2 ctermfg=142
     hi Folded ctermbg=236
-    hi MatchParen ctermbg=darkblue
+    hi MatchParen ctermbg=none cterm=bold,underline ctermfg=green
 endfunction
 call Highlights()
 
@@ -130,7 +129,6 @@ augroup END
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<tab>"
-
 
 " keybinds
 let mapleader = ' '
