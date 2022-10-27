@@ -52,6 +52,7 @@ set foldmethod=syntax
 set foldlevel=1
 set foldnestmax=1 "dont fold nested
 set foldminlines=0
+set undodir=/tmp//
 let g:vimtex_view_method='skim'
 " switch to manual foldmethod in insert mode, fixes unwanted behaviour where folds open in insert mode
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
