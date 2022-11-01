@@ -16,7 +16,14 @@ call plug#begin('~/.vim/plugged')
     Plug 'morhetz/gruvbox'
     Plug 'neovimhaskell/haskell-vim'
     Plug 'vim-syntastic/syntastic'
+    Plug 'uiiaoo/java-syntax.vim'
 call plug#end()
+
+function! SynGroup()
+    let l:s = synID(line('.'), col('.'), 1)
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
+nnoremap <leader>h :call SynGroup()<cr>
 
 " General settings
 set nocompatible
@@ -83,10 +90,9 @@ set t_Co=256
 set background=dark
 colorscheme gruvbox
 
-
-
 " put highlights here
 function Highlights()
+    hi link javaIdentifier NONE
     hi! link SignColumn LineNr
     hi link GitGutterAdd GruvBoxAqua
     hi link GitGutterChange GruvBoxYellow
@@ -239,3 +245,4 @@ au filetype cpp nnoremap <leader><F6> :wa<cr>:!clear && make<cr>
 " run ./main
 au filetype cpp nnoremap <F6> :!clear && ./bin/debug/main<cr>
 au filetype cpp nnoremap <F7> :!clear && ./bin/release/main<cr>
+au filetype java nnoremap <F5> :w<cr>:!clear<cr>:exec '!javac %'<cr>:exec '!time java -cp %:p:h %:t:r'<cr>

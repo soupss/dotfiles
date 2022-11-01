@@ -44,6 +44,7 @@ alias ............="cd ../../../../../../../../../../../"
 alias .............="cd ../../../../../../../../../../../../"
 alias ..............="cd ../../../../../../../../../../../../../"
 alias ...............="cd ../../../../../../../../../../../../../../"
+alias j="(){javac $1.java;java $1}"
 
 # Highlight section titles in manual pages.
 export LESS_TERMCAP_md="${yellow}";
@@ -52,3 +53,4 @@ export LESS_TERMCAP_md="${yellow}";
 source /Users/anton/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f "/Users/anton/.ghcup/env" ] && source "/Users/anton/.ghcup/env" # ghcup-env
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
