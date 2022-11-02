@@ -84,6 +84,7 @@ if filereadable(".index/cscope.out")
 elseif $CSCOPE_DB != ""
     cs add $CSCOPE_DB
 endif
+set noesckeys
 
 " colors
 set t_Co=256
