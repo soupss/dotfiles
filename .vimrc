@@ -16,7 +16,16 @@ call plug#begin('~/.vim/plugged')
     Plug 'morhetz/gruvbox'
     Plug 'neovimhaskell/haskell-vim'
     Plug 'vim-syntastic/syntastic'
+    Plug 'ludovicchabant/vim-gutentags'
     Plug 'uiiaoo/java-syntax.vim'
+        let g:gutentags_define_advanced_commands = 1
+    Plug 'majutsushi/tagbar'
+        let g:tagbar_compact = 1
+        let g:tagbar_show_data_type = 1
+        let g:tagbar_iconchars = ['>', 'v']
+        let g:tagbar_show_tag_linenumbers = 2
+        let g:tagbar_zoomwidth = 0
+        let g:tagbar_wrap = 1
 call plug#end()
 
 function! SynGroup()
@@ -50,7 +59,7 @@ set noeb vb t_vb=
 set notimeout ttimeout
 set list lcs=tab:\ \ ,extends:…,precedes:…,nbsp:~,trail:~
 set fillchars+=vert:│,fold:\ ,diff:x
-set showbreak=+++\ 
+set showbreak=…
 set cpoptions+=n
 " show search result index+count
 set shortmess-=S
@@ -74,16 +83,6 @@ if (&ft == 'hpp')
 endif
 au BufEnter *.cpp let b:fswitchdst = 'hpp' | let b:fswitchlocs = '../inc'
 au BufEnter *.hpp let b:fswitchdst = 'cpp' | let b:fswitchlocs = '../src'
-" cscope
-set cscopetag
-if filereadable(".index/cscope.out")
-    silent !cscope -Rb -f .index/cscope.out
-    cs add .index/cscope.out
-    " update cscope db on save  !use f3 mapping instead
-    " au BufWritePost * !cscope -Rb -f .index/cscope.out
-elseif $CSCOPE_DB != ""
-    cs add $CSCOPE_DB
-endif
 set noesckeys
 
 " colors
@@ -132,11 +131,6 @@ augroup CursorLine
     au BufWinEnter * setlocal cursorline
     au WinLeave * setlocal nocursorline
 augroup END
-
-" snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<tab>"
 
 " keybinds
 let mapleader = ' '
@@ -195,10 +189,6 @@ inoremap <ESC> <C-c>
 " add numbered j/k to jumplist
 nnoremap <silent> k :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'k'<CR>
 nnoremap <silent> j :<C-U>execute 'normal!' (v:count > 1 ? "m'" . v:count : '') . 'j'<CR>
-" CSCOPE MAPPINGS
-" use -Rbq for large projects, !creates 2 additional files: cscope.in.out & cscope.po.out
-" ':cs reset' doesnt add new db
-nnoremap <f3> :!mkdir -p .index && cscope -Rb -f .index/cscope.out<cr>:cs kill -1<cr>:cs add .index/cscope.out<cr>
 " lower case = under cursor
 " upper case = search
 " find function definition
@@ -247,3 +237,5 @@ au filetype cpp nnoremap <leader><F6> :wa<cr>:!clear && make<cr>
 au filetype cpp nnoremap <F6> :!clear && ./bin/debug/main<cr>
 au filetype cpp nnoremap <F7> :!clear && ./bin/release/main<cr>
 au filetype java nnoremap <F5> :w<cr>:!clear<cr>:exec '!javac %'<cr>:exec '!time java -cp %:p:h %:t:r'<cr>
+nnoremap gd <C-]>
+nnoremap <leader>t :TagbarToggle<CR>
