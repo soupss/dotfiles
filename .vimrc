@@ -2,7 +2,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'lervag/vimtex'
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-        let g:fzf_layout = { 'down': '40%' }
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
         let g:tex_flavor = 'latex'
@@ -15,7 +14,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-markdown'
     Plug 'morhetz/gruvbox'
     Plug 'neovimhaskell/haskell-vim'
-    Plug 'vim-syntastic/syntastic'
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'uiiaoo/java-syntax.vim'
         let g:gutentags_define_advanced_commands = 1
@@ -23,16 +21,11 @@ call plug#begin('~/.vim/plugged')
         let g:tagbar_compact = 1
         let g:tagbar_show_data_type = 1
         let g:tagbar_iconchars = ['>', 'v']
-        let g:tagbar_show_tag_linenumbers = 2
         let g:tagbar_zoomwidth = 0
         let g:tagbar_wrap = 1
+        let g:tagbar_width = 55
+        let g:tagbar_sort = 0
 call plug#end()
-
-function! SynGroup()
-    let l:s = synID(line('.'), col('.'), 1)
-    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-endfun
-nnoremap <leader>h :call SynGroup()<cr>
 
 " General settings
 set nocompatible
@@ -179,7 +172,6 @@ nnoremap <bs> :b#<cr>
 nnoremap <silent> <leader>o :Files<cr>
 nnoremap <silent> <leader>b :Buffers<cr>
 nnoremap <silent> <leader><leader>g :Goyo<cr>
-nnoremap <silent> <leader>t :TlistToggle<cr>
 nnoremap <silent> <leader>q :FSHere<cr>
 au filetype cpp nnoremap <buffer> <silent> <leader>Q :FSSplitLeft<cr>
 au filetype hpp nnoremap <buffer> <silent> <leader>Q :FSSplitRight<cr>
@@ -238,4 +230,5 @@ au filetype cpp nnoremap <F6> :!clear && ./bin/debug/main<cr>
 au filetype cpp nnoremap <F7> :!clear && ./bin/release/main<cr>
 au filetype java nnoremap <F5> :w<cr>:!clear<cr>:exec '!javac %'<cr>:exec '!time java -cp %:p:h %:t:r'<cr>
 nnoremap gd <C-]>
-nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <silent> <leader>t :TagbarOpen fj<CR>
+nnoremap <silent> <leader>c :TagbarClose<CR>
