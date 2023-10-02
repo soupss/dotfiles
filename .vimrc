@@ -1,5 +1,10 @@
 call plug#begin('~/.vim/plugged')
     Plug 'lervag/vimtex'
+        let g:vimtex_quickfix_ignore_filters = [
+                    \ 'Underfull',
+                    \ 'pgfplots',
+                    \ 'Overfull',
+                    \]
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'tpope/vim-commentary'
@@ -57,7 +62,7 @@ set cpoptions+=n
 " show search result index+count
 set shortmess-=S
 set nobackup nowritebackup noswapfile undofile
-set foldmethod=syntax
+set foldmethod=manual
 set foldlevel=1
 set foldnestmax=1 "dont fold nested
 set foldminlines=0
@@ -226,8 +231,7 @@ au filetype cpp nnoremap <F5> :w<cr>:!clear<cr>:exec '!g++ % -o %:r && ./%:r'<cr
 " compile with makefile
 au filetype cpp nnoremap <leader><F6> :wa<cr>:!clear && make<cr>
 " run ./main
-au filetype cpp nnoremap <F6> :!clear && ./bin/debug/main<cr>
-au filetype cpp nnoremap <F7> :!clear && ./bin/release/main<cr>
+au filetype cpp nnoremap <F6> :!clear && ./bin/main<cr>
 au filetype java nnoremap <F5> :w<cr>:!clear<cr>:exec '!javac %'<cr>:exec '!time java -cp %:p:h %:t:r'<cr>
 nnoremap gd <C-]>
 nnoremap <silent> <leader>t :TagbarOpen fj<CR>
