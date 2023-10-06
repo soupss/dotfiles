@@ -98,7 +98,7 @@ function Highlights()
     hi link GitGutterChangeDelete GruvBoxOrange
     hi StatusLine cterm=none ctermbg=none ctermfg=2
     hi StatisLineGreen cterm=none ctermbg=none ctermfg=7
-    hi StatusLineNC cterm=none ctermbg=none ctermfg=237
+    hi StatusLineNC cterm=none ctermbg=none ctermfg=240
     hi illuminatedWord cterm=reverse
     "red
     hi User1 ctermfg=167
@@ -165,6 +165,7 @@ noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
+nnoremap <C-b> <C-a>
 
 " resize splits with arrow keys
 nnoremap <Up> <C-w>+
@@ -176,10 +177,6 @@ nnoremap <leader>l :set wrap! wrap?<cr>
 nnoremap <bs> :b#<cr>
 nnoremap <silent> <leader>o :Files<cr>
 nnoremap <silent> <leader>b :Buffers<cr>
-nnoremap <silent> <leader><leader>g :Goyo<cr>
-nnoremap <silent> <leader>q :FSHere<cr>
-au filetype cpp nnoremap <buffer> <silent> <leader>Q :FSSplitLeft<cr>
-au filetype hpp nnoremap <buffer> <silent> <leader>Q :FSSplitRight<cr>
 " cleaner exit from insert/visual mode
 vnoremap <ESC> <C-c>
 inoremap <ESC> <C-c>
