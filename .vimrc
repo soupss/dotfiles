@@ -98,7 +98,7 @@ function Highlights()
     hi link GitGutterChangeDelete GruvBoxOrange
     hi StatusLine cterm=none ctermbg=none ctermfg=2
     hi StatisLineGreen cterm=none ctermbg=none ctermfg=7
-    hi StatusLineNC cterm=none ctermbg=none ctermfg=240
+    hi StatusLineNC cterm=none ctermbg=none ctermfg=242
     hi illuminatedWord cterm=reverse
     "red
     hi User1 ctermfg=167
