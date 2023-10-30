@@ -1,5 +1,5 @@
 autoload -U colors && colors
-PS1="%F{yellow}%~ %(?.%F{blue}%#.%F{red}%#) %f"
+PS1="%B%F{yellow}%~ %(?.%F{blue}%#.%F{red}%#) %b%f"
 export EDITOR="/usr/bin/vim"
 
 # History in cache directory:
@@ -54,3 +54,4 @@ source /Users/anton/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f "/Users/anton/.ghcup/env" ] && source "/Users/anton/.ghcup/env" # ghcup-env
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/Users/anton/Library/Python/3.9/bin:$PATH"

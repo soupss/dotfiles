@@ -99,7 +99,7 @@ function Highlights()
     hi StatusLine cterm=none ctermbg=none ctermfg=2
     hi StatisLineGreen cterm=none ctermbg=none ctermfg=7
     hi StatusLineNC cterm=none ctermbg=none ctermfg=242
-    hi illuminatedWord cterm=reverse
+    hi illuminatedWord cterm=bold,underline
     "red
     hi User1 ctermfg=167
     "green
@@ -166,6 +166,7 @@ noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 nnoremap <C-b> <C-a>
+nnoremap <C-a> <nop>
 
 " resize splits with arrow keys
 nnoremap <Up> <C-w>+
@@ -177,6 +178,7 @@ nnoremap <leader>l :set wrap! wrap?<cr>
 nnoremap <bs> :b#<cr>
 nnoremap <silent> <leader>o :Files<cr>
 nnoremap <silent> <leader>b :Buffers<cr>
+nnoremap <silent> <leader>r :Rg<cr>
 " cleaner exit from insert/visual mode
 vnoremap <ESC> <C-c>
 inoremap <ESC> <C-c>
