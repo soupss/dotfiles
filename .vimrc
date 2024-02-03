@@ -168,6 +168,8 @@ noremap <Right> <nop>
 nnoremap <C-b> <C-a>
 nnoremap <C-a> <nop>
 
+nnoremap <leader>y "*y
+nnoremap <leader>Y :%y*<cr>
 " resize splits with arrow keys
 nnoremap <Up> <C-w>+
 nnoremap <Down> <C-w>-
