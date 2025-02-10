@@ -45,7 +45,7 @@ source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 ZVM_VI_HIGHLIGHT_BACKGROUND=#665c54
 ZVM_CURSOR_STYLE_ENABLED=false
 
-PS1=$'%B%F{green}%n%f%b at %B%F{cyan}%m %F{yellow}%~\n%(?.%F{blue}.%F{red})> %b%f'
+PS1=$'%B%F{green}%n%f%b %B%F{cyan}%m%f%b %F{yellow}%~\n%(?.%F{blue}.%F{red})> %b%f'
 
 # The plugin will auto execute this zvm_after_select_vi_mode function
 function zvm_after_select_vi_mode() {
